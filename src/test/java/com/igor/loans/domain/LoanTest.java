@@ -60,4 +60,22 @@ class LoanTest {
         }
 
     }
+
+    @Nested
+    class isConsignmentAvailable {
+
+        @Test
+        void shouldBeAvailableWhenIncomeEqualOrGreaterThan5k() {
+            doReturn(true).when(customer).isIncomeEqualOrGreaterThan(5000.0);
+            assertTrue(loan.isConsignmentAvailable());
+        }
+
+        @Test
+        void shouldNotBeAvailableWhenIncomeIsNotEqualOrGreaterThan5k() {
+            doReturn(false).when(customer).isIncomeEqualOrGreaterThan(5000.0);
+            assertFalse(loan.isConsignmentAvailable());
+        }
+
+    }
+
 }
