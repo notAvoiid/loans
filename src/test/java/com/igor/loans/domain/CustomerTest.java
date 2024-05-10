@@ -3,12 +3,10 @@ package com.igor.loans.domain;
 import com.igor.loans.factory.CustomerFactory;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(MockitoExtension.class)
 class CustomerTest {
 
     @Nested
@@ -33,5 +31,25 @@ class CustomerTest {
         }
     }
 
+    @Nested
+    class isIncomeEqualOrGreaterThan {
 
+        @Test
+        void ShouldBeTrueWhenIncomeIsEqual() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertTrue(costumer.isIncomeEqualOrGreaterThan(5000.0));
+        }
+
+        @Test
+        void ShouldBeTrueWhenIncomeIsGreaterThan() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertTrue(costumer.isIncomeEqualOrGreaterThan(3000.0));
+        }
+
+        @Test
+        void ShouldBeFalseWhenIncomeLowerThanValue() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertFalse(costumer.isIncomeEqualOrGreaterThan(8000.0));
+        }
+    }
 }
