@@ -52,4 +52,34 @@ class CustomerTest {
             assertFalse(costumer.isIncomeEqualOrGreaterThan(8000.0));
         }
     }
+
+    @Nested
+    class isIncomeBetween {
+
+        @Test
+        void ShouldBeTrueWhenIncomeIsBetween() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertTrue(costumer.isIncomeBetween(3000.0, 8000));
+        }
+
+        @Test
+        void ShouldBeTrueWhenIncomeIsEqualToMin() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertTrue(costumer.isIncomeBetween(5000.0, 8000));
+        }
+
+
+        @Test
+        void ShouldBeTrueWhenIncomeIsEqualToMax() {
+            var costumer = CustomerFactory.build(8000.0);
+            assertTrue(costumer.isIncomeBetween(5000.0, 8000));
+        }
+
+        @Test
+        void ShouldBeFalseWhenIncomeIsNotBetween() {
+            var costumer = CustomerFactory.build(5000.0);
+            assertFalse(costumer.isIncomeBetween(6000.0, 10000));
+        }
+
+    }
 }
