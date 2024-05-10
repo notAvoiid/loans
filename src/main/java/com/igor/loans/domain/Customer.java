@@ -1,7 +1,5 @@
 package com.igor.loans.domain;
 
-import java.util.Objects;
-
 public class Customer {
 
     private Integer age;
