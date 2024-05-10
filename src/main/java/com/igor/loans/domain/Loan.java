@@ -48,6 +48,6 @@ public class Loan {
 
         return customer.isIncomeBetween(3000.0, 5000.0)
                 && customer.isAgeLowerThan(30)
-                && customer.isFromLocation("sp");
+                && customer.isFromLocation("SP");
     }
 }
