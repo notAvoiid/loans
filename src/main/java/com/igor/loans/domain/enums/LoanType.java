@@ -1,4 +1,4 @@
-package com.igor.loans.domain;
+package com.igor.loans.domain.enums;
 
 public enum LoanType {
 
