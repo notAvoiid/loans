@@ -106,4 +106,22 @@ class CustomerTest {
         }
 
     }
+
+    @Nested
+    class isFromLocation {
+
+        @Test
+        void ShouldBeTrueWhenLocationIsTheSame() {
+            var costumer = CustomerFactory.build("SP");
+            assertTrue(costumer.isFromLocation("SP"));
+        }
+
+        @Test
+        void ShouldBeFalseWhenLocationIsNotTheSame() {
+            var costumer = CustomerFactory.build("SP");
+            assertFalse(costumer.isFromLocation("RJ"));
+        }
+
+    }
+
 }
